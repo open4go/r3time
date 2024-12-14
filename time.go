@@ -5,6 +5,20 @@ import (
 	"time"
 )
 
+// CurrentTimestamp 当前时间戳
+func CurrentTimestamp() int64 {
+	// 加载时区信息
+	loc, err := time.LoadLocation("Asia/Shanghai")
+	if err != nil {
+		fmt.Println("Error loading location:", err)
+		return 0
+	}
+
+	// Using time.Now() function.
+	dt := time.Now().In(loc)
+	return dt.Unix()
+}
+
 // CurrentTime 当前时间
 // 格式 2006.01.02 15:04:05
 func CurrentTime() string {
