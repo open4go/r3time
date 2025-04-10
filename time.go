@@ -69,3 +69,17 @@ func Timestamp2ReadTime(timestamp int64) string {
 	t := dt.Format("2006-01-02 15:04:05")
 	return t
 }
+
+// LocTime 本地时间
+func LocTime() time.Time {
+	// 加载时区信息
+	loc, err := time.LoadLocation("Asia/Shanghai")
+	if err != nil {
+		fmt.Println("Error loading location:", err)
+		return time.Now()
+	}
+
+	// Using time.Now() function.
+	dt := time.Now().In(loc)
+	return dt
+}
